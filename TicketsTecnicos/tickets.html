@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Gestión de Tickets</title>
+</head>
+<body>
+
+  <h2>Crear nuevo ticket</h2>
+
+  <form action="crear_ticket.php" method="post">
+  <label for="descripcion">Descripción:</label><br>
+  <textarea id="descripcion" name="descripcion" rows="4" cols="50" required></textarea><br><br>
+
+  <!-- Fecha de apertura generada automáticamente con JavaScript -->
+  <input type="hidden" id="fecha_apertura" name="fecha_apertura">
+
+  <input type="submit" value="Enviar ticket">
+</form>
+
+<script>
+  // Genera la fecha actual en formato yyyy-mm-dd
+  const hoy = new Date().toISOString().split('T')[0];
+  document.getElementById("fecha_apertura").value = hoy;
+</script>
+
+
+  <hr>
+
+
+
+</body>
+</html>
