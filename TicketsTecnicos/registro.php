@@ -18,9 +18,9 @@ $contrasena_hash = password_hash($contrasena, PASSWORD_DEFAULT);
 
 $rol = 3;
 
-$sql = "INSERT INTO users (usuario, correo, contraseña, rol) VALUES (usuario, correo, contraseña, rol)";
+$sql = "INSERT INTO users (usuario, correo, contraseña, rol) VALUES (?, ?, ?, ?)";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param($usuario, $correo, $contrasena_hash, $rol);
+$stmt->bind_param("sssi", $usuario, $correo, $contrasena_hash, $rol);
 
 if ($stmt->execute()) {
     echo "Registro exitoso.";
