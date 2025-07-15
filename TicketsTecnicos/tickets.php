@@ -7,9 +7,6 @@ $basedatos = "tickets_tecnicos";
 // Conexión
 $conn = new mysqli($host, $usuario_db, $contrasena_db, $basedatos);
 
-
-
-
 // Recoger los datos del formulario
 $descripcion = $_POST['descripcion'];
 $fecha_apertura = $_POST['fecha_apertura'];
