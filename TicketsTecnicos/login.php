@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 $host = "localhost";
 $usuario_db = "root";
 $contrasena_db = ""; 
@@ -16,15 +19,24 @@ $stmt->execute();
 $resultado = $stmt->get_result();
 
 if ($resultado->num_rows === 1) {
-    $fila = $resultado->fetch_assoc();
-    $contrasena_hash = $fila['contraseña'];
+        $_SESSION['usuario_id'] = $fila['id'];
+        $_SESSION['rol'] = $fila['rol'];
 
-    if (password_verify($contrasena, $contrasena_hash)) {
-        echo "Inicio de sesión exitoso.";
+        if ($fila['rol'] == 1) {
+            header("Location: admin.php");
+        } elseif ($fila['rol'] == 2) {
+            header("Location: tecnico.php");
+        } else {
+            header("Location: usuario.php");
+        }
+        exit;
     } else {
-        echo "Datos incorrectos";
-    }}
- 
+        echo "Contraseña incorrecta.";
+    } else {
+    echo "Usuario no encontrado.";
+}
+
+
 $stmt->close();
 $conn->close();
 ?>
