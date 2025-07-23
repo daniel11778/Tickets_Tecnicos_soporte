@@ -17,6 +17,10 @@ $sql = "INSERT INTO tickets (descripcion, estado, fecha_de_apertura) VALUES (?, 
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("sss", $descripcion, $estado, $fecha_apertura);
 
+$sql2 = "SELECT id, descripcion, estado, fecha_de_apertura FROM tickets";
+$stmt = $conn->prepare($sql2);
+
+
 // Ejecutar
 if ($stmt->execute()) {
     echo "Ticket creado correctamente.";

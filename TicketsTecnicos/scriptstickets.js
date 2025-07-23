@@ -14,3 +14,5 @@ const ahora = new Date();
 
   document.getElementById("fecha_apertura").value = fecha_apertura;
   }
+
+  document.getElementById("array").value = array;
