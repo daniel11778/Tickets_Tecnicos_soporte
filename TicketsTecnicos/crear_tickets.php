@@ -4,24 +4,23 @@ $usuario_db = "root";
 $contrasena_db = "";
 $basedatos = "tickets_tecnicos";
 
-// Conexión
+
 $conn = new mysqli($host, $usuario_db, $contrasena_db, $basedatos);
 
-// Recoger los datos del formulario
 $descripcion = $_POST['descripcion'];
 $fecha_apertura = $_POST['fecha_apertura'];
-$estado = "pendiente"; // Default al crear
+$estado = "pendiente";
 
-// Preparar SQL
 $sql = "INSERT INTO tickets (descripcion, estado, fecha_de_apertura) VALUES (?, ?, ?)";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("sss", $descripcion, $estado, $fecha_apertura);
 
-$sql2 = "SELECT id, descripcion, estado, fecha_de_apertura FROM tickets";
+$sql2 = "SELECT id, descripcion, estado, fecha_de_apertura 
+FROM tickets
+WHERE id_usuario = ?";
 $stmt = $conn->prepare($sql2);
 
 
-// Ejecutar
 if ($stmt->execute()) {
     echo "Ticket creado correctamente.";
 } else {
