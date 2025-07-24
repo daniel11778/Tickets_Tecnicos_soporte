@@ -17,6 +17,7 @@ $id_usuario = $_SESSION['usuario_id'];
 $sql = "INSERT INTO tickets (descripcion, estado, fecha_de_apertura, id_usuario) VALUES (?, ?, ?, ?)";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("sssi", $descripcion, $estado, $fecha_apertura,$id_usuario);
+$stmt->execute();
 
 $stmt->close();
 

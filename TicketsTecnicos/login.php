@@ -24,8 +24,7 @@ if ($resultado->num_rows === 1) {
     if (password_verify($contrasena, $fila['contraseña'])) {
         $_SESSION['usuario_id'] = $fila['id'];
         $_SESSION['rol'] = $fila['rol'];
-
-       
+        
             header("Location: crear_tickets.html");
         
         exit;

@@ -15,4 +15,8 @@ const ahora = new Date();
   document.getElementById("fecha_apertura").value = fecha_apertura;
   }
 
-  document.getElementById("array").value = array;
+  function login() {
+
+    document.getElementById("login_html").value = datos_login;
+
+  }
